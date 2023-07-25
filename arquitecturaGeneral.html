@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <title>Arquitectura General</title>
+  </head>
+  <body>
+    <h1>5. Arquitectura General</h1>
+    <p>
+      Dados los requerimientos funcionales y no funcionales la arquitectura
+      general de la aplicación es la siguiente:
+    </p>
+    <center><img src="assets/5imagen1.png" width="572" height="393" /></center>
+    <h2>5.1. Capa 1: Datos</h2>
+    <p>
+      La capa de datos es donde se realiza la persistencia “oficial” de los
+      datos generados desde las diferentes vistas, esto quiere decir que hay
+      información que persiste en las diferentes vistas por el requerimiento
+      particular de poder funcionar “offline”, sin embargo, toda la información
+      se debe sincronizar y los datos finales son los que están en la base de
+      datos. La aplicación guarda la información en una base de datos,
+      particularmente MySQL 8.0.23. En la base de datos no se realiza ninguna
+      lógica, es decir, no hay procedimientos almacenados; la base de datos se
+      utiliza para realizar las consultas eficientes y como se mencionó
+      anteriormente para su guardado
+    </p>
+    <h2>5.2. Capa 2: Lógica de negocio</h2>
+    <p>
+      Aquí se realiza toda la lógica de negocio, toda la información que envían
+      las diferentes vistas se procesa aquí con dos objetivos (1) enviarla a las
+      diferentes vistas para su sincronización, (2) tener la data procesada para
+      mostrar de forma eficiente indicadores.
+    </p>
+    <img
+      src="assets/5imagen2.png"
+      width="152.5"
+      height="182.5 "
+      style="margin: 10px 10px 10px 0px; float: left"
+    />
+    <p style="max-width: 441">
+      Tal como se muestra en la figura la lógica se realiza en POJO´s (Portable
+      Old Java Objects) y se utiliza el patrón VO/DAO, la lógica de persistencia
+      y consulta está en los DAO´s; los objetos DAO´s son los únicos que tienen
+      la posibilidad y obligación de comunicación con la base de datos. Los VO
+      son los encargados de saber que hacer con la información que llega y que
+      se consulta, son las clases “inteligentes” que saben como procesar toda la
+      información.
+    </p>
+    <h2>5.3. Capa 3: Conectividad cliente final</h2>
+    <p>
+      A esta capa se le conoce en diferentes arquitecturas como la API. Está
+      capa el principal objetivo es exponer la información de manera segura en
+      un lenguaje que entiendan las vistas. En particular para AGRODAT se
+      realizaron unos Servlets que exponen información en lenguaje JSON, se
+      utiliza como servidor de aplicaciones TOMCAT versión 9, pero funciona
+      desde la versión 8.
+    </p>
+    <h2>5.4. Capa 4: Visualización</h2>
+    <p>
+      Las visualizaciones son las responsables de consultar la información de la
+      capa de conectividad, además de renderizar la visualización. Aquí se
+      proponen tres vistas diferentes (1) App móvil, (2) App web, (3) App web
+      administración:
+    </p>
+    <h3>5.4.1. App móvil</h3>
+    <p>
+      La app móvil es una vista cuyo principal objetivo es la toma de
+      información y como se ha mencionado anteriormente debe funcionar sin red o
+      con red. El requerimiento de funcionamiento fuera de línea implica que se
+      debe darle responsabilidad de guardado de información y de realizar
+      cálculos, es decir replicar la lógica de negocio. Para el desarrollo se
+      utilizó como framework APACHE CORDOVA, lo que permitió desarrollar la app
+      para iOS y Android en lenguajes css, html y javascript y tener un solo
+      desarrollo para los dos sistemas operativos.
+    </p>
+    <h3>5.4.2. Aplicación web USUARIO</h3>
+    <p>
+      Los usuarios, particularmente, los administradores tienen una vista donde
+      pueden ver la información que se genera en las fincas, además de
+      generación de informes que permiten el análisis mas en detalle de la
+      información. Esta vista está desarrollada en REACT lo que le da la
+      responsabilidad a los browser la renderización de las diferentes vistas
+      que tiene la aplicación.
+    </p>
+    <h3>5.4.3. Aplicación web ADMINISTRADOR</h3>
+    <p>
+      Es la vista donde los usuarios administradores podrán tener diferentes
+      herramientas para dar soporte a los diferentes usuarios. Al igual que la
+      vista web usuario, esta vista está desarrollada en REACT lo que le da la
+      responsabilidad a los browser la renderización de las diferentes vistas
+      que tiene la aplicación.
+    </p>
+  </body>
+</html>
