@@ -8,8 +8,8 @@
       Dados los requerimientos funcionales y no funcionales la arquitectura
       general de la aplicación es la siguiente:
     </p>
-    <center><img src="assets/5imagen1.png" width="572" height="393" /></center>
-    <h2>5.1. Capa 1: Datos</h2>
+    <center><img src="assets/5imagen1.png" width="600" height="400" /></center>
+    <h2 id="AG1">5.1. Capa 1: Datos</h2>
     <p>
       La capa de datos es donde se realiza la persistencia “oficial” de los
       datos generados desde las diferentes vistas, esto quiere decir que hay
@@ -22,7 +22,7 @@
       utiliza para realizar las consultas eficientes y como se mencionó
       anteriormente para su guardado
     </p>
-    <h2>5.2. Capa 2: Lógica de negocio</h2>
+    <h2 id="AG2">5.2. Capa 2: Lógica de negocio</h2>
     <p>
       Aquí se realiza toda la lógica de negocio, toda la información que envían
       las diferentes vistas se procesa aquí con dos objetivos (1) enviarla a las
@@ -35,7 +35,7 @@
       height="182.5 "
       style="margin: 10px 10px 10px 0px; float: left"
     />
-    <p style="max-width: 441">
+    <p>
       Tal como se muestra en la figura la lógica se realiza en POJO´s (Portable
       Old Java Objects) y se utiliza el patrón VO/DAO, la lógica de persistencia
       y consulta está en los DAO´s; los objetos DAO´s son los únicos que tienen
@@ -44,7 +44,7 @@
       se consulta, son las clases “inteligentes” que saben como procesar toda la
       información.
     </p>
-    <h2>5.3. Capa 3: Conectividad cliente final</h2>
+    <h2 id="AG3">5.3. Capa 3: Conectividad cliente final</h2>
     <p>
       A esta capa se le conoce en diferentes arquitecturas como la API. Está
       capa el principal objetivo es exponer la información de manera segura en
@@ -53,14 +53,14 @@
       utiliza como servidor de aplicaciones TOMCAT versión 9, pero funciona
       desde la versión 8.
     </p>
-    <h2>5.4. Capa 4: Visualización</h2>
+    <h2 id="AG4">5.4. Capa 4: Visualización</h2>
     <p>
       Las visualizaciones son las responsables de consultar la información de la
       capa de conectividad, además de renderizar la visualización. Aquí se
       proponen tres vistas diferentes (1) App móvil, (2) App web, (3) App web
       administración:
     </p>
-    <h3>5.4.1. App móvil</h3>
+    <h3 id="AG41">5.4.1. App móvil</h3>
     <p>
       La app móvil es una vista cuyo principal objetivo es la toma de
       información y como se ha mencionado anteriormente debe funcionar sin red o
@@ -71,7 +71,7 @@
       para iOS y Android en lenguajes css, html y javascript y tener un solo
       desarrollo para los dos sistemas operativos.
     </p>
-    <h3>5.4.2. Aplicación web USUARIO</h3>
+    <h3 id="AG42">5.4.2. Aplicación web USUARIO</h3>
     <p>
       Los usuarios, particularmente, los administradores tienen una vista donde
       pueden ver la información que se genera en las fincas, además de
@@ -80,7 +80,7 @@
       responsabilidad a los browser la renderización de las diferentes vistas
       que tiene la aplicación.
     </p>
-    <h3>5.4.3. Aplicación web ADMINISTRADOR</h3>
+    <h3 id="AG43">5.4.3. Aplicación web ADMINISTRADOR</h3>
     <p>
       Es la vista donde los usuarios administradores podrán tener diferentes
       herramientas para dar soporte a los diferentes usuarios. Al igual que la
