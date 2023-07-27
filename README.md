@@ -5,7 +5,7 @@
 Este taller fue desarrollado por:
 
 - Alejandro Uscátegui
-- Carlos
+- Carlos Santiago Rojas Calderón
 - Camilo Nossa
 - Gianluca Gramegna
 - Stiven Ortiz
