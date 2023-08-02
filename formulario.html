@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+    <link rel="stylesheet" href="assets\css\styles.css" />
+  </head>
+
+  <body>
+    <nav class="menu">
+      <ul class="ulnav">
+        <li class="linav">
+          <a class="active" href="index.html">&iacute;ndice</a>
+        </li>
+      </ul>
+    </nav>
+
+    <h1>Formulario de contactos</h1>
+
+    <div style="justify-content: center; align-items: center">
+      <div align="center">
+        <p
+          style="
+            max-width: max-content;
+            padding: 8px;
+            margin: 25px;
+            border-radius: 10px;
+            color: #367cd0;
+            font-family: Arial;
+          "
+        >
+          Agradecemos que nos ayude a llenar este formulario para en algún
+          momento ponernos en contacto con usted.
+        </p>
+      </div>
+      <div style="display: flex; justify-content: center; align-items: left">
+        <div>
+          <form action="">
+            <label for="">Nombres</label>
+            <input
+              oninput="verifyCharacters(this)"
+              id="names"
+              type="text"
+              placeholder="Nombres"
+              size="50"
+              maxlength="50"
+            />
+            <br />
+            <span id="namesErrorMsg" style="visibility: hidden; color: red"
+              >Has escrito 50 carácteres</span
+            >
+            <br />
+            <label for="">Apellidos</label>
+            <input
+              oninput="verifyCharacters(this)"
+              id="lastNames"
+              type="text"
+              placeholder="Apellidos"
+              size="50"
+              maxlength="50"
+            /><br />
+            <span id="lastNamesErrorMsg" style="visibility: hidden; color: red">
+              Has escrito 50 carácteres</span
+            ><br />
+            <label for="">Fecha</label>
+            <input id="date" type="date" /><br />
+            <span id="dateErrorMsg" style="visibility: hidden; color: red">
+              Debe de ingresar una fecha</span
+            ><br />
+            <label for="">Edad</label>
+            <input
+              oninput="verifyAge(this)"
+              id="age"
+              type="number"
+              placeholder="Edad"
+              max="99"
+            /><br />
+            <span id="ageErrorMsg" style="visibility: hidden; color: red">
+              La edad debe ser menor o igual a 99</span
+            ><br />
+            <center>
+              <button
+                type="button"
+                onclick="verifyData()"
+                style="
+                  max-width: max-content;
+                  padding: 8px;
+                  margin: 25px;
+                  background-color: #367cd0;
+                  border-radius: 10px;
+                  color: white;
+                  font-family: Arial;
+                "
+              >
+                Enviar
+              </button>
+            </center>
+            <center>
+              <span id="generalError" style="visibility: hidden; color: red">
+                Por favor llene todos los campos solicitados</span
+              ><br />
+            </center>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="src/formulario.js"></script>
+</html>
